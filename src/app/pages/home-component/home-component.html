@@ -12,21 +12,21 @@
     <h3 matSubheader>Menu</h3>
     <mat-nav-list>
       @for (link of fragments; track link) {
-    <a
-      mat-list-item
-      [activated]="activeLink===link"
-      href="#{{link}}"
-      (click)="$event.preventDefault(); activeLink=link;"
-    >
-      <mat-icon matListItemIcon>folder</mat-icon>
-      <span matListItemTitle>{{ link | titlecase}}</span>
-      <div matListItemMeta>
-        <mat-icon>{{link}}</mat-icon>
-      </div>
-    </a>
-  }
+          <a
+            mat-list-item
+            [routerLink]="link.route"
+            routerLinkActive="active" 
+            [activated]="activeLink===link.title"
+            href="#{{link}}"
+            (click)="$event.preventDefault(); activeLink=link.title;"
+          >
+              <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+              <span matListItemTitle>{{ link.title| titlecase}}</span>
+          </a>
+      }
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
