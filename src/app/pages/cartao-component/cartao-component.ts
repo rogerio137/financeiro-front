@@ -9,6 +9,9 @@ import { MatLabel } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/select';
+import { BandeiraCartao } from '../../enums/bandeira-cartao';
+import { TitleCasePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
  
 export interface Tile {
   color: string;
@@ -28,7 +31,9 @@ export interface Tile {
             MatLabel,
             MatInputModule,
             MatSelect,
-            MatOption
+            MatOption,
+            TitleCasePipe,
+            CommonModule
           ],
   templateUrl: './cartao-component.html',
   styleUrl: './cartao-component.scss',
@@ -40,4 +45,7 @@ export class CartaoComponent {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
+
+  bandeiras = Object.values(BandeiraCartao);
+  selecionado? = BandeiraCartao;
 }

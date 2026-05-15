@@ -9,9 +9,10 @@
     <div class="form-subcontainer">
         <mat-form-field appearance="fill">
         <mat-label>Bandeira</mat-label>
-            <mat-select >
-                <mat-option value="one">Master Card</mat-option>
-                <mat-option value="two">Visa</mat-option>
+            <mat-select [(value)]="selecionado">
+                <mat-option *ngFor="let bandeira of bandeiras" [value]="bandeira">
+                    {{ bandeira | titlecase }}
+                </mat-option>
             </mat-select>
             </mat-form-field>
     
