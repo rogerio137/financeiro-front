@@ -1,46 +1,46 @@
 <mat-toolbar>
   <span>Novo cartão</span>
   <span class="espacamento-botoes"></span>
-  <button mat-raised-button color="primary" class="botoes-toolbar">Salvar</button>
+  <button mat-raised-button color="primary" class="botoes-toolbar" (click)="salvar()">Salvar</button>
   <button mat-raised-button>Cancelar</button>
 </mat-toolbar>
 <mat-divider></mat-divider>
-<div class="form-container">
+<div [formGroup]="form" class="form-container" >
     <div class="form-subcontainer">
         <mat-form-field appearance="fill">
         <mat-label>Bandeira</mat-label>
-            <mat-select [(value)]="selecionado">
+            <mat-select formControlName="bandeira">
                 <mat-option *ngFor="let bandeira of bandeiras" [value]="bandeira">
                     {{ bandeira | titlecase }}
                 </mat-option>
             </mat-select>
-            </mat-form-field>
+        </mat-form-field>
     
      
         <mat-form-field appearance="fill">
         <mat-label>Banco</mat-label>
-            <mat-select>
-                <mat-option value="one">Caixa economica</mat-option>
-                <mat-option value="two">Bradesco</mat-option>
-                <mat-option value="two">Santander</mat-option>
+            <mat-select formControlName="banco">
+                <mat-option *ngFor="let banco of bancos" [value]="banco">
+                    {{ banco | titlecase }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
     
     
         <mat-form-field appearance="fill">
         <mat-label>Fechamento</mat-label>
-            <input matInput>
+            <input matInput formControlName="fechamento">
         </mat-form-field>
     
     
         <mat-form-field appearance="fill">
         <mat-label>Vencimento</mat-label>
-            <input matInput>
+            <input matInput formControlName="vencimento">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
         <mat-label>Limite</mat-label>
-            <input matInput>
+            <input matInput formControlName="limite">
         </mat-form-field>
 
        
@@ -48,7 +48,7 @@
     <div>
          <mat-form-field class="campo-descricao"  appearance="fill">
             <mat-label>Descrição</mat-label>
-            <input matInput>
+            <input matInput formControlName="descricao">
         </mat-form-field>
     </div>
     

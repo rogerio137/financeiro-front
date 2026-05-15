@@ -12,6 +12,8 @@ import { MatOption } from '@angular/material/select';
 import { BandeiraCartao } from '../../enums/bandeira-cartao';
 import { TitleCasePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Bancos } from '../../enums/bancos';
  
 export interface Tile {
   color: string;
@@ -33,12 +35,14 @@ export interface Tile {
             MatSelect,
             MatOption,
             TitleCasePipe,
-            CommonModule
+            CommonModule,
+            ReactiveFormsModule 
           ],
   templateUrl: './cartao-component.html',
   styleUrl: './cartao-component.scss',
 })
 export class CartaoComponent {
+  form: FormGroup;
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
     {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
@@ -48,4 +52,25 @@ export class CartaoComponent {
 
   bandeiras = Object.values(BandeiraCartao);
   selecionado? = BandeiraCartao;
+
+  bancos = Object.values(Bancos);
+  bancoSelecionado? = Bancos;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      bandeira: [''],
+      banco: [''],
+      fechamento: [''],
+      vencimento: [''],
+      limite: [''],
+      descricao: ['']
+    });
+  }
+
+  salvar() {
+    const valores = this.form.value;
+    console.log(valores);
+  }
+
+
 }
