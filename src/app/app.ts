@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from "./pages/home-component/home-component";
+import { CartaoComponent } from './pages/cartao-component/cartao-component';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent],
+  imports: [RouterOutlet, CartaoComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
