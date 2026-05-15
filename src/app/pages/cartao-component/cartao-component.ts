@@ -6,7 +6,7 @@ import { MatDivider } from "@angular/material/divider";
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormField } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/select';
 import { BandeiraCartao } from '../../enums/bandeira-cartao';
@@ -14,6 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Bancos } from '../../enums/bancos';
+import { CartaoDTO, CartaoService } from '../../servicos/cartao-service';
  
 export interface Tile {
   color: string;
@@ -56,20 +57,24 @@ export class CartaoComponent {
   bancos = Object.values(Bancos);
   bancoSelecionado? = Bancos;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      bandeira: [''],
-      banco: [''],
-      fechamento: [''],
-      vencimento: [''],
-      limite: [''],
-      descricao: ['']
+  constructor(private fb: FormBuilder, private cartaoService: CartaoService) {
+    this.form = this.fb.group<CartaoDTO>({
+      bandeira: '',
+      banco: '',
+      fechamento: '',
+      vencimento: '',
+      limite: '',
+      descricao: ''
     });
   }
 
   salvar() {
-    const valores = this.form.value;
-    console.log(valores);
+    const cartaoDTO: CartaoDTO = this.form.value;
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzg4ODM1NDB9.RBBmKHHi091yrbpvZJ1JjYcwCye1UXSbcW454mQNBIA';
+    this.cartaoService.salvar(cartaoDTO, token).subscribe({
+      next: () => console.log('Cartão salvo com sucesso!'),
+      error: (err) => console.error('Erro ao salvar', err)
+    });
   }
 
 
