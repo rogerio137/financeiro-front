@@ -7,20 +7,25 @@
     //background: #FAEBD7;
 }
 
-.container {
-  display: flex;
-  gap: 1px;
-  //background: #FAEBD7
-}
-
-.campo {
-  flex: 10; /* cada campo ocupa espaço igual */
-  //border: 1px solid #ccc;
-  padding: 20px;
- // background: #7FFFD4;
-}
-
 .campo-descricao{
-    width: 1109px;
+    width: 1000px;
+}
+
+.form-container {
+  display: block;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+  
+}
+.mat-form-field {
+  flex: 1 1 200px; /* Cresce, diminui e tem tamanho base */
+}
+.form-subcontainer{
+  display: flex;
+  gap: 16px;
+  padding-top: 50px;
 }
 

@@ -5,17 +5,17 @@
   <button mat-raised-button>Cancelar</button>
 </mat-toolbar>
 <mat-divider></mat-divider>
-<div class="container">
-    <div class="campo">
+<div class="form-container">
+    <div class="form-subcontainer">
         <mat-form-field appearance="fill">
         <mat-label>Bandeira</mat-label>
-            <mat-select>
+            <mat-select >
                 <mat-option value="one">Master Card</mat-option>
                 <mat-option value="two">Visa</mat-option>
             </mat-select>
-        </mat-form-field>
-    </div>
-     <div class="campo">
+            </mat-form-field>
+    
+     
         <mat-form-field appearance="fill">
         <mat-label>Banco</mat-label>
             <mat-select>
@@ -24,32 +24,33 @@
                 <mat-option value="two">Santander</mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
-    <div class="campo">
+    
+    
         <mat-form-field appearance="fill">
         <mat-label>Fechamento</mat-label>
             <input matInput>
         </mat-form-field>
-    </div>
-    <div class="campo">
+    
+    
         <mat-form-field appearance="fill">
         <mat-label>Vencimento</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+        <mat-label>Limite</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+       
+    </div>
+    <div>
+         <mat-form-field class="campo-descricao"  appearance="fill">
+            <mat-label>Descrição</mat-label>
             <input matInput>
         </mat-form-field>
     </div>
     
 </div>
-<div class="container">
-    <div class="campo">
-        <mat-form-field class="campo-descricao"  appearance="fill">
-            <mat-label>Descrição</mat-label>
-            <input matInput>
-        </mat-form-field>
-    </div>
-    <div class="campo">
-        <mat-form-field appearance="fill">
-        <mat-label>Limite</mat-label>
-            <input matInput>
-        </mat-form-field>
-    </div>
-</div>
+
+
