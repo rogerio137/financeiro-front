@@ -4,6 +4,11 @@ import { MatButton } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDivider } from "@angular/material/divider";
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormField } from '@angular/material/form-field';
+import { MatLabel } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/select';
  
 export interface Tile {
   color: string;
@@ -14,7 +19,17 @@ export interface Tile {
 
 @Component({
   selector: 'app-cartao-component',
-  imports: [MatToolbarModule, MatButton, MatGridListModule, MatDivider, MatDividerModule],
+  imports: [MatToolbarModule, 
+            MatButton, 
+            MatGridListModule, 
+            MatDivider, 
+            MatDividerModule, 
+            MatFormField, 
+            MatLabel,
+            MatInputModule,
+            MatSelect,
+            MatOption
+          ],
   templateUrl: './cartao-component.html',
   styleUrl: './cartao-component.scss',
 })
