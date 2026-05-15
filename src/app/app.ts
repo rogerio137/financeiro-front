@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { CartaoComponent } from './pages/cartao-component/cartao-component';
 import { HomeComponent } from './pages/home-component/home-component';
 
 

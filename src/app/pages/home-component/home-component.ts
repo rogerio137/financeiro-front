@@ -6,8 +6,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { TitleCasePipe } from '@angular/common';
-import { RouterOutlet } from "../../../../node_modules/@angular/router/types/_router_module-chunk";
-import { RouterLinkWithHref } from "@angular/router";
+import { RouterLinkWithHref, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-home-component',

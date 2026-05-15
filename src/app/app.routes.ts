@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home-component/home-component';
+import { InicialComponent } from './pages/inicial-component/inicial-component';
 import { CartaoComponent } from './pages/cartao-component/cartao-component';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
     { path: 'cartao', component: CartaoComponent },
+    { path: 'home', component: InicialComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
