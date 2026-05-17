@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Bancos } from '../../enums/bancos';
 import { CartaoDTO, CartaoService } from '../../servicos/cartao-service';
+import { MatSnackBar, MatSnackBarAction, MatSnackBarConfig } from '@angular/material/snack-bar';
  
 export interface Tile {
   color: string;
@@ -22,6 +23,8 @@ export interface Tile {
   rows: number;
   text: string;
 }
+
+
 
 @Component({
   selector: 'app-cartao-component',
@@ -37,13 +40,14 @@ export interface Tile {
             MatOption,
             TitleCasePipe,
             CommonModule,
-            ReactiveFormsModule 
+            ReactiveFormsModule
           ],
   templateUrl: './cartao-component.html',
-  styleUrl: './cartao-component.scss',
+  styleUrl: './cartao-component.scss'
 })
 export class CartaoComponent {
   form: FormGroup;
+
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
     {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
@@ -57,7 +61,9 @@ export class CartaoComponent {
   bancos = Object.values(Bancos);
   bancoSelecionado? = Bancos;
 
-  constructor(private fb: FormBuilder, private cartaoService: CartaoService) {
+  constructor(private fb: FormBuilder, 
+              private cartaoService: CartaoService,
+              private snackBar: MatSnackBar) {
     this.form = this.fb.group<CartaoDTO>({
       bandeira: '',
       banco: '',
@@ -68,12 +74,22 @@ export class CartaoComponent {
     });
   }
 
+  
+  
+
   salvar() {
+    const config = new MatSnackBarConfig();
+    config.duration = 5000;
+    config.horizontalPosition = 'center';
+    config.verticalPosition = 'top';
+    config.panelClass = 'snackbar-error';
+
+    
     const cartaoDTO: CartaoDTO = this.form.value;
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzg4ODM1NDB9.RBBmKHHi091yrbpvZJ1JjYcwCye1UXSbcW454mQNBIA';
     this.cartaoService.salvar(cartaoDTO, token).subscribe({
       next: () => console.log('Cartão salvo com sucesso!'),
-      error: (err) => console.error('Erro ao salvar', err)
+      error: (err) => this.snackBar.open('Erro ao tentar salvar !','Desfazer', config)
     });
   }
 
