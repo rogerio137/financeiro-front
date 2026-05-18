@@ -37,3 +37,14 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.mat-snack-bar-container.snackbar-error {
+  background-color: #d32f2f !important; // vermelho
+  color: #fff !important;
+  font-weight: bold;
+
+  .mat-button-wrapper {
+    color: #ffebee !important;
+    font-weight: 600;
+  }
+}
