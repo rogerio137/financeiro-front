@@ -1,5 +1,5 @@
 export enum BandeiraCartao{
-    Master = 'MASTER CARD',
+    MASTER_CARD = 'MASTER_CARD',
     Visa = 'VISA',
     America = 'AMERICA EXPRESS'
 

@@ -1,5 +1,5 @@
 export enum Bancos {
-    Bradesco = 'Bradesco',
-    Itau = 'Itau',
+    BRADESCO = 'BRADESCO',
+    ITAU = 'ITAU',
     SANTANDER = 'SANTANDER'
 }
