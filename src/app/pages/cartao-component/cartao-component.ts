@@ -78,18 +78,17 @@ export class CartaoComponent {
   
 
   salvar() {
-    const config = new MatSnackBarConfig();
-    config.duration = 5000;
-    config.horizontalPosition = 'center';
-    config.verticalPosition = 'top';
-    config.panelClass = 'snackbar-error';
-
     
     const cartaoDTO: CartaoDTO = this.form.value;
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzg4ODM1NDB9.RBBmKHHi091yrbpvZJ1JjYcwCye1UXSbcW454mQNBIA';
     this.cartaoService.salvar(cartaoDTO, token).subscribe({
       next: () => console.log('Cartão salvo com sucesso!'),
-      error: (err) => this.snackBar.open('Erro ao tentar salvar !','Desfazer', config)
+      error: (err) => this.snackBar.open('Erro ao tentar salvar !','Desfazer', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: ['snackbar-erroo']
+      })
     });
   }
 
