@@ -21,6 +21,7 @@
     "@angular/router": "^21.2.13",
     "jquery": "^4.0.0",
     "materialize-css": "^1.0.0",
+    "ngx-toastr": "^20.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -28,6 +29,7 @@
     "@angular/build": "^21.2.11",
     "@angular/cli": "^21.2.11",
     "@angular/compiler-cli": "^21.2.13",
+    "@types/materialize-css": "^1.0.15",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2",

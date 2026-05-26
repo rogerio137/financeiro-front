@@ -15,7 +15,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Bancos } from '../../enums/bancos';
 import { CartaoDTO, CartaoService } from '../../servicos/cartao-service';
-import { MatSnackBar, MatSnackBarAction, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar} from '@angular/material/snack-bar';
+import { ToastComponent } from '../../component/toast-component/toast-component';
  
 export interface Tile {
   color: string;
@@ -48,13 +49,6 @@ export interface Tile {
 export class CartaoComponent {
   form: FormGroup;
 
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
   bandeiras = Object.values(BandeiraCartao);
   selecionado? = BandeiraCartao;
 
@@ -63,7 +57,7 @@ export class CartaoComponent {
 
   constructor(private fb: FormBuilder, 
               private cartaoService: CartaoService,
-              private snackBar: MatSnackBar) {
+              private toast: ToastComponent) {
     this.form = this.fb.group<CartaoDTO>({
       bandeira: '',
       banco: '',
@@ -83,12 +77,7 @@ export class CartaoComponent {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzg4ODQzNDh9.eM995GIz0KBoeFuJdt5WQsWe7cA7ERCw4dQ_dUZYZ8Y';
     this.cartaoService.salvar(cartaoDTO, token).subscribe({
       next: () => console.log('Cartão salvo com sucesso!'),
-      error: (err) => this.snackBar.open('Erro ao tentar salvar !','Desfazer', {
-        duration: 5000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-        panelClass: ['snackbar-erroo']
-      })
+      error: (err) => this.toast.showError('Erro ao tentar salvar')
     });
   }
 
