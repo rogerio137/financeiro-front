@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Bancos } from '../../enums/bancos';
 import { CartaoDTO, CartaoService } from '../../servicos/cartao-service';
-import { MatSnackBar, MatSnackBarAction, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar} from '@angular/material/snack-bar';
  
 export interface Tile {
   color: string;
