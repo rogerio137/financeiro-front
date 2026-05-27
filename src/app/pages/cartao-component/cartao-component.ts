@@ -74,10 +74,10 @@ export class CartaoComponent {
   salvar() {
     
     const cartaoDTO: CartaoDTO = this.form.value;
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzg4ODQzNDh9.eM995GIz0KBoeFuJdt5WQsWe7cA7ERCw4dQ_dUZYZ8Y';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzk5MTk0NDF9.M0Uay3s6xl29ki4vthUfMGu5AZlgxhbnMWFdyDim5rw';
     this.cartaoService.salvar(cartaoDTO, token).subscribe({
-      next: () => console.log('Cartão salvo com sucesso!'),
-      error: (err) => this.toast.showError('Erro ao tentar salvar')
+      next: () => this.toast.showSuccess('Dados salvo com sucesso !', 'Sucesso'),
+      error: (err) => this.toast.showError(err.message, 'Erro')
     });
   }
 

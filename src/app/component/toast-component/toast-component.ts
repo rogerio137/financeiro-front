@@ -1,5 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import * as M from 'materialize-css'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-toast-component',
@@ -13,20 +14,14 @@ import * as M from 'materialize-css'
   providedIn: 'root'
 })
 export class ToastComponent {
-  showSuccess(message: string) {
-    M.toast({
-      html: `<span>${message}</span>`,
-      classes: 'green darken-2',
-      displayLength: 3000
-    });
+
+  constructor(private mensagem: ToastrService){}
+  showSuccess(message: string, titulo: string) {
+    this.mensagem.success(message, titulo)
   }
 
-  showError(message: string) {
-    M.toast({
-      html: `<span>${message}</span>`,
-      classes: 'red darken-2',
-      displayLength: 4000
-    });
+  showError(message: string, titulo: string) {
+    this.mensagem.error(message,titulo)
   }
 
   showInfo(message: string) {
