@@ -12,7 +12,7 @@ import { MatOption } from '@angular/material/select';
 import { BandeiraCartao } from '../../enums/bandeira-cartao';
 import { TitleCasePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Bancos } from '../../enums/bancos';
 import { CartaoDTO, CartaoService } from '../../servicos/cartao-service';
 import { MatSnackBar} from '@angular/material/snack-bar';
@@ -58,13 +58,13 @@ export class CartaoComponent {
   constructor(private fb: FormBuilder, 
               private cartaoService: CartaoService,
               private toast: ToastComponent) {
-    this.form = this.fb.group<CartaoDTO>({
-      bandeira: '',
-      banco: '',
-      fechamento: '',
-      vencimento: '',
-      limite: '',
-      descricao: ''
+    this.form = this.fb.group({
+      bandeira: ['', Validators.required],
+      banco: ['', Validators.required],
+      fechamento: ['', Validators.required],
+      vencimento: ['', Validators.required],
+      limite: ['', Validators.required],
+      descricao: ['', Validators.required]
     });
   }
 
@@ -73,8 +73,8 @@ export class CartaoComponent {
 
   salvar() {
     
-    const cartaoDTO: CartaoDTO = this.form.value;
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3Nzk5MTk0NDF9.M0Uay3s6xl29ki4vthUfMGu5AZlgxhbnMWFdyDim5rw';
+    const cartaoDTO: CartaoDTO = this.form.value as CartaoDTO;
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3ODA5NzAwNjZ9.75yPPjqet5deVXsNdA2gsDpjSEeR-eOfX0FbnDvXzTg';
     this.cartaoService.salvar(cartaoDTO, token).subscribe({
       next: () => this.toast.showSuccess('Dados salvo com sucesso !', 'Sucesso'),
       error: (err) => this.toast.showError(err.message, 'Erro')
