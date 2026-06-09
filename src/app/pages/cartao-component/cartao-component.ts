@@ -72,13 +72,20 @@ export class CartaoComponent {
   
 
   salvar() {
+
+    if(this.form.invalid){
+      this.form.markAllAsTouched();
+      this.toast.showError('Os campos devem ser preenchidos','Erro')
+    }else{
+      const cartaoDTO: CartaoDTO = this.form.value as CartaoDTO;
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3ODA5Njk5NDF9.7k0Vbs3bB866U3bgmzZTVp4WMFTrfPpiTolNMtQGHxg';
+      this.cartaoService.salvar(cartaoDTO, token).subscribe({
+          next: () => this.toast.showSuccess('Dados salvo com sucesso !', 'Sucesso'),
+          error: (err) => this.toast.showError(err.message, 'Erro')
+        });
+    }
     
-    const cartaoDTO: CartaoDTO = this.form.value as CartaoDTO;
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InJvZ2VyaW8iLCJleHAiOjE3ODA5NzAwNjZ9.75yPPjqet5deVXsNdA2gsDpjSEeR-eOfX0FbnDvXzTg';
-    this.cartaoService.salvar(cartaoDTO, token).subscribe({
-      next: () => this.toast.showSuccess('Dados salvo com sucesso !', 'Sucesso'),
-      error: (err) => this.toast.showError(err.message, 'Erro')
-    });
+    
   }
 
 
